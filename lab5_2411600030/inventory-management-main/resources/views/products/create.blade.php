@@ -1,52 +1,85 @@
+
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Add New Product') }}
-        </h2>
+        <div>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">Inventory workspace</p>
+            <h1 class="mt-1 text-2xl font-extrabold tracking-tight text-slate-900">Add New Product</h1>
+            <p class="mt-1 text-sm text-slate-500">Enter the product details to add it to your inventory.</p>
+        </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <form action="{{ route('products.store') }}" method="POST">
+    <div class="min-h-screen bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+            <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div class="border-b border-slate-100 bg-slate-50/70 px-6 py-5 sm:px-8">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 5v14m7-7H5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="font-extrabold text-slate-900">Product information</h2>
+                            <p class="mt-1 text-sm text-slate-500">Fields marked as required must be completed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="{{ route('products.store') }}" method="POST" class="space-y-6 p-6 sm:p-8">
                     @csrf
 
-                    <div class="mb-4">
-                        <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2" for="name">Product Name</label>
+                    <div>
+                        <label for="name" class="mb-2 block text-sm font-bold text-slate-700">Product name <span class="text-red-500">*</span></label>
                         <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white dark:border-gray-600">
-                        @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                               placeholder="e.g. Wireless keyboard"
+                               class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10">
+                        @error('name') <p class="mt-2 text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                     </div>
 
-                    <div class="mb-4">
-                        <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2" for="description">Description</label>
-                        <textarea name="description" id="description" rows="3"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white dark:border-gray-600">{{ old('description') }}</textarea>
-                        @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    <div>
+                        <label for="description" class="mb-2 block text-sm font-bold text-slate-700">Description</label>
+                        <textarea name="description" id="description" rows="4"
+                                  placeholder="Add a short description of this product..."
+                                  class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10">{{ old('description') }}</textarea>
+                        @error('description') <p class="mt-2 text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <div>
-                            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2" for="price">Price ($)</label>
-                            <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}" required
-                                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white dark:border-gray-600">
-                            @error('price') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                            <label for="price" class="mb-2 block text-sm font-bold text-slate-700">Unit price ($) <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-slate-400">$</span>
+                                <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}" required
+                                       placeholder="0.00"
+                                       class="w-full rounded-xl border border-slate-200 bg-white py-3 pl-9 pr-4 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10">
+                            </div>
+                            @error('price') <p class="mt-2 text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2" for="quantity">Quantity</label>
+                            <label for="quantity" class="mb-2 block text-sm font-bold text-slate-700">Quantity <span class="text-red-500">*</span></label>
                             <input type="number" name="quantity" id="quantity" value="{{ old('quantity') }}" required
-                                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white dark:border-gray-600">
-                            @error('quantity') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                   placeholder="Enter stock quantity"
+                                   class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10">
+                            @error('quantity') <p class="mt-2 text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                         </div>
                     </div>
 
-                    <div class="flex justify-end space-x-3">
-                        <a href="{{ route('products.index') }}" class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md text-sm">Cancel</a>
-                        <button type="submit" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm">Save Product</button>
+                    <div class="flex flex-col-reverse gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end">
+                        <a href="{{ route('products.index') }}" class="inline-flex items-center justify-center rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50">
+                            Cancel
+                        </a>
+                        <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12 4 4L19 6"/>
+                            </svg>
+                            Save Product
+                        </button>
                     </div>
                 </form>
             </div>
+
+            <p class="mt-5 text-center text-xs text-slate-400">Please review the product information before saving.</p>
         </div>
     </div>
 </x-app-layout>
