@@ -3,148 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Live links to my Web Systems and Technologies laboratory activities.">
-  <title>IT Laboratories | Marvin Meneses</title>
+  <meta name="theme-color" content="#151416">
+  <meta name="description" content="Marvin M. Meneses — Web System and Technology laboratory activities and independent projects portfolio.">
+  <title>Marvin Meneses | Academic Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #14213d;
-      --blue: #2457c5;
-      --sky: #eaf1ff;
-      --ink: #1d2939;
-      --muted: #667085;
-      --paper: #f6f8fc;
-      --white: #ffffff;
-      --border: #e4e9f2;
-      --gold: #e9b949;
+      --pink: #E99AAF;
+      --pink-soft: #FCE7ED;
+      --canvas: #FFFFFF;
+      --slate: #66535A;
+      --ink: #30252A;
+      --rose: #A83E61;
+      --gold: #FFE2A0;
+      --night: #151416;
+      --line: #F0DDE3;
+      --surface: #FFF7F9;
+      --green: #26734D;
+      --green-soft: #E8F6EE;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top right, rgba(36,87,197,.10), transparent 30rem),
-        var(--paper);
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body { min-height: 100vh; font-family: "DM Sans", sans-serif; background: var(--canvas); color: var(--ink); }
+    button, a { font: inherit; }
+    a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #B64D70; outline-offset: 5px; }
+    .welcome-screen {
+      position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 28px 20px; color: #F8EDF0;
+      background: radial-gradient(ellipse at 50% 70%, #272126 0%, #1B191C 38%, #111113 78%);
+      transition: opacity 1.25s ease, visibility 1.25s ease;
     }
-    .wrap { width: min(1100px, calc(100% - 36px)); margin: 0 auto; }
-    header { padding: 54px 0 32px; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 12px; border-radius: 999px;
-      background: var(--sky); color: var(--blue);
-      font-size: .82rem; font-weight: 800; letter-spacing: .04em;
-      text-transform: uppercase;
+    .welcome-screen::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .2;
+      background-image: radial-gradient(#FFF 0.5px, transparent 0.5px); background-size: 7px 7px;
+      mask-image: linear-gradient(to bottom, transparent, black 70%, transparent);
     }
-    h1 { margin: 18px 0 10px; color: var(--navy); font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.12; }
-    .intro { max-width: 680px; color: var(--muted); font-size: 1.05rem; margin: 0; }
-    .student { margin-top: 18px; color: var(--navy); font-weight: 700; }
-    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin: 24px 0 16px; }
-    .section-heading h2 { margin: 0; color: var(--navy); font-size: 1.45rem; }
-    .section-heading p { margin: 0; color: var(--muted); font-size: .9rem; }
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding-bottom: 38px; }
-    .card {
-      display: flex; flex-direction: column; min-height: 220px;
-      padding: 24px; background: var(--white); border: 1px solid var(--border);
-      border-radius: 20px; box-shadow: 0 8px 26px rgba(20,33,61,.045);
+    .welcome-screen::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+      background: radial-gradient(ellipse at 50% 52%, rgba(255,218,150,.36), rgba(241,184,198,.12) 35%, transparent 72%);
+      transition: opacity 2s ease;
     }
-    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-    .number {
-      width: 48px; height: 48px; display: grid; place-items: center;
-      border-radius: 14px; background: var(--sky); color: var(--blue);
-      font-size: 1.05rem; font-weight: 900;
-    }
-    .status { color: #18794e; background: #e9f8ef; padding: 5px 9px; border-radius: 999px; font-size: .75rem; font-weight: 800; white-space: nowrap; }
-    .status.pending { color: #8a5a00; background: #fff4d6; }
-    .card h3 { margin: 17px 0 5px; color: var(--navy); font-size: 1.18rem; }
-    .card p { margin: 0 0 20px; color: var(--muted); font-size: .94rem; }
-    .action {
-      display: inline-flex; justify-content: center; align-items: center; gap: 8px;
-      width: fit-content; margin-top: auto; padding: 10px 15px;
-      border-radius: 11px; color: white; background: var(--blue);
-      text-decoration: none; font-weight: 750; font-size: .9rem;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .action:hover { background: #1946a6; transform: translateY(-1px); }
-    .action.secondary { background: var(--navy); }
-    .action.secondary:hover { background: #263b63; }
-    .note {
-      margin: 0 0 34px; padding: 18px 20px; border-left: 4px solid var(--gold);
-      background: #fff9e9; border-radius: 0 12px 12px 0; color: #6b5314;
-      font-size: .93rem;
-    }
-    footer { border-top: 1px solid var(--border); padding: 22px 0 32px; color: var(--muted); font-size: .88rem; }
-    footer a { color: var(--blue); font-weight: 700; text-decoration: none; }
-    @media (max-width: 680px) {
-      header { padding-top: 36px; }
-      .grid { grid-template-columns: 1fr; }
-      .section-heading { align-items: start; flex-direction: column; }
-      .card { min-height: 205px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="wrap">
-    <span class="eyebrow">Web Systems and Technologies</span>
-    <h1>My IT Laboratories</h1>
-    <p class="intro">Welcome! Use the links below to open each laboratory activity for checking. Each activity is kept in its own project folder.</p>
-    <p class="student">Marvin M. Meneses</p>
-  </header>
-
-  <main class="wrap">
-    <div class="section-heading">
-      <h2>Laboratory Activities</h2>
-      <p>Select a laboratory to open it.</p>
-    </div>
-
-    <section class="grid" aria-label="Laboratory links">
-      <article class="card">
-        <div class="card-top"><div class="number">01</div><span class="status">Live page</span></div>
-        <h3>Laboratory 1</h3>
-        <p>Open the first HTML laboratory activity.</p>
-        <a class="action" href="./lab1_2411600030/lab1.html">Open Lab 1 <span aria-hidden="true">↗</span></a>
-      </article>
-
-      <article class="card">
-        <div class="card-top"><div class="number">02</div><span class="status">Live page</span></div>
-        <h3>Laboratory 2</h3>
-        <p>Open the second laboratory website.</p>
-        <a class="action" href="./lab2_2411600030/index.html">Open Lab 2 <span aria-hidden="true">↗</span></a>
-      </article>
-
-      <article class="card">
-        <div class="card-top"><div class="number">03</div><span class="status">Live page</span></div>
-        <h3>Laboratory 3</h3>
-        <p>Open the login and dashboard project.</p>
-        <a class="action" href="./lab3_2411600030/index.html">Open Lab 3 <span aria-hidden="true">↗</span></a>
-      </article>
-
-      <article class="card">
-        <div class="card-top"><div class="number">04</div><span class="status">Live page</span></div>
-        <h3>Laboratory 4</h3>
-        <p>Open the enhanced dashboard and data management project.</p>
-        <a class="action" href="./lab4_2411600030/index.html">Open Lab 4 <span aria-hidden="true">↗</span></a>
-      </article>
-
-      <article class="card">
-        <div class="card-top"><div class="number">05</div><span class="status pending">Needs PHP hosting</span></div>
-        <h3>Laboratory 5 — Laravel Inventory</h3>
-        <p>This is a Laravel/PHP application. GitHub Pages cannot run PHP, so it must be deployed to a PHP-compatible host to be checked live.</p>
-        <a class="action secondary" href="https://github.com/MarvinMeneses-hub/IT-Laboratories/tree/main/lab5_2411600030/inventory-management-main" target="_blank" rel="noopener noreferrer">View Lab 5 source <span aria-hidden="true">↗</span></a>
-      </article>
-    </section>
-
-    <aside class="note">
-      <strong>Note for checking:</strong> Labs 1–4 will open as live pages after GitHub Pages is enabled for this repository. Lab 5's source code is available above, but the running Laravel application needs separate PHP hosting.
-    </aside>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <span>© <span id="year">2026</span> Marvin M. Meneses · IT Laboratories</span>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/MarvinMeneses-hub/IT-Laboratories" target="_blank" rel="noopener noreferrer">View GitHub repository</a>
-    </div>
-  </footer>
-</body>
-</html>
+    .welcome-screen.lamp-on::after { opacity: 1; }
+    .welcome-screen.leaving { opacity: 0; visibility: hidden; pointer-events: none; }
+    .intro-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: min(100%, 520px); text-align: center; transform: translateY(-10px); }
+    .intro-eyebrow { margin-bottom: 15px; color: #9D9299; font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; }
+    .intro-title { font-family: "Playfair Display", serif; font-size: clamp(2rem, 6vw, 3.3rem); font-weight: 500; line-height: 1.15; letter-spacing: -.035em; }
+    .intro-title span { color: var(--pink); font-style: italic; }
+    .intro-description { max-width: 330px; margin-top: 14px; color: #B8ADB3; font-size: 13px; line-height: 1.8; }
+    .lamp-button { position: relative; display: flex; align-items: center; justify-content: center; width: min(100%, 350px); height: 340px; margin-top: 3px; border: 0; border-radius: 50%; background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .lamp-button:focus-visible { outline: 2px solid rgba(255,226,160,.7); outline-offset: -14px; }
+    .lamp-halo { position: absolute; top: 20%; left: 50%; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(255,219,151,.05), rgba(255,219,151,.015) 42%, transparent 70%); opacity: .75; transform: translateX(-50%); transition: all 1.5s ease; }
+    .lamp-button:hover .lamp-halo { background: radial-gradient(circle, rgba(255,219,151,.12), rgba(255,219,151,.025) 50%, transparent 72%); }
+    .lamp-beam { position: absolute; top: 29%; left: 50%; width: 0; height: 0; border-left: 112px solid transparent; border-right: 112px solid transparent; border-top: 215px solid rgba(255,220,155,0); filter: blur(14px); transform: translateX(-50%); transform-origin: top center; transition: border-top-color 1.8s ease, filter 1.8s ease, transform 1.8s ease; }
+    .lamp-illustration { position: relative; z-index: 2; width: 190px; height: 255px; overflow: visible; filter: drop-shadow(0 5px 12px rgba(0,0,0,.4)); transition: filter 1.5s ease; }
+    .lamp-bulb { fill: #766A5D; transition: fill 1.3s ease, filter 1.3s ease; }
+    .lamp-shade { fill: #373239; stroke: #5B5158; stroke-width: 1.2; transition: fill 1.3s ease, stroke 1.3s ease; }
+    .lamp-stem { stroke: #4C444A; stroke-width: 7; stroke-linecap: round; transition: stroke 1.3s ease; }
+    .lamp-base { fill: #393238; stroke: #5A5056; stroke-width: 1; transition: fill 1.3s ease; }
+    .lamp-floor-light { position: absolute; bottom: 26px; left: 50%; width: 110px; height: 15px; border-radius: 50%; background: rgba(255,217,145,0); filter: blur(10px); transform: translateX(-50%); transition: all 1.8s ease; }
+    .lamp-instruction { margin-top: -9px; color: #B8ADB3; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; animation: breathe 2.6s ease-in-out infinite; }
+    .lamp-instruction span { display: inline-block; margin-right: 7px; color: var(--pink); }
+    .intro-footer { position: absolute; bottom: 25px; color: #80757D; font-size: 10px; letter-spacing: .12em; text-align: center; }
+    .welcome-screen.lamp-on .lamp-bulb { fill: #FFF0C4; filter: drop-shadow(0 0 8px #FFE7AC) drop-shadow(0 0 24px #FFCB70) drop-shadow(0 0 44px rgba(255,194,95,.85)); }
+    .welcome-screen.lamp-on .lamp-shade { fill: #67505A; stroke: #A78B83; }
+    .welcome-screen.lamp-on .lamp-stem { stroke: #A18B7C; }
+    .welcome-screen.lamp-on .lamp-base { fill: #65515A; }
+    .welcome-screen.lamp-on .lamp-halo { width: 430px; height: 430px; background: radial-gradient(circle, rgba(255,224,163,.38), rgba(255,205,133,.16) 33%, rgba(241,184,198,.07) 52%, transparent 72%); }
+    .welcome-screen.lamp-on .lamp-beam { border-top-color: rgba(255,222,162,.27); filter: blur(22px); transform: translateX(-50%) scale(1.55); }
+    .welcome-screen.lamp-on .lamp-floor-light { width: 270px; height: 42px; background: rgba(255,217,145,.36); box-shadow: 0 0 45px 25px rgba(255,217,145,.12); }
+    .welcome-screen.lamp-on .lamp-instruction { color: #FFE5B0; animation: none; }
+    .welcome-screen.lamp-on .lamp-illustration { filter: drop-shadow(0 0 24px rgba(255,211,136,.25)); }
+    .dust { position: absolute; z-index: 1; width: 3px; height: 3px; border-radius: 50%; background: #FFE5B0; opacity: 0; box-shadow: 0 0 8px rgba(255,222,162,.9); pointer-events: none; }
+    .welcome-screen.lamp-on .dust { animation: floatDust 3s ease-in-out infinite; }
+    .dust-one { top: 44%; left: 30%; animation-delay: .1s; }
