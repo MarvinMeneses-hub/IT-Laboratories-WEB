@@ -78,4 +78,297 @@
     .welcome-screen.lamp-on .lamp-illustration { filter: drop-shadow(0 0 24px rgba(255,211,136,.25)); }
     .dust { position: absolute; z-index: 1; width: 3px; height: 3px; border-radius: 50%; background: #FFE5B0; opacity: 0; box-shadow: 0 0 8px rgba(255,222,162,.9); pointer-events: none; }
     .welcome-screen.lamp-on .dust { animation: floatDust 3s ease-in-out infinite; }
-    .dust-one { top: 44%; left: 30%; animation-delay: .1s; }
+    .dust-one { top: 44%; left: 30%; animation-delay: .1s; } .dust-two { top: 53%; left: 69%; animation-delay: .7s; }
+    .dust-three { top: 62%; left: 38%; animation-delay: 1.1s; } .dust-four { top: 39%; left: 63%; animation-delay: 1.5s; }
+    .dust-five { top: 70%; left: 57%; animation-delay: .4s; } .dust-six { top: 48%; left: 45%; animation-delay: 1.8s; }
+    @keyframes floatDust { 0%,100% { opacity: 0; transform: translateY(10px) scale(.6); } 45% { opacity: .8; transform: translateY(-14px) scale(1); } }
+    @keyframes breathe { 0%,100% { opacity: .65; } 50% { opacity: 1; } }
+
+    .portfolio { min-height: 100vh; opacity: 0; visibility: hidden; background: #FFF; transition: opacity 1.2s ease; }
+    .portfolio.is-visible { opacity: 1; visibility: visible; }
+    .portfolio-header { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px clamp(22px,7vw,100px); border-bottom: 1px solid #F4E5E9; background: rgba(255,255,255,.96); backdrop-filter: blur(14px); }
+    .brand { flex: 0 0 auto; color: var(--ink); font-family: "Playfair Display",serif; font-size: 20px; font-weight: 600; text-decoration: none; letter-spacing: -.04em; }
+    .brand span { color: #D95F82; }
+    .header-note { flex: 0 0 auto; color: #725B63; font-size: 10px; letter-spacing: .08em; text-align: right; text-transform: uppercase; line-height: 1.7; }
+    .portfolio-nav { display: flex; align-items: center; justify-content: center; gap: clamp(12px,2vw,28px); }
+    .portfolio-nav a { color: #66535A; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: color .2s ease; }
+    .portfolio-nav a:hover, .portfolio-nav a:focus-visible { color: #B83F66; }
+    .portfolio-nav .nav-github { padding: 9px 13px; border: 1px solid #E8B4C4; border-radius: 999px; color: #963C5B; background: #FFF7F9; }
+    .nav-toggle { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; flex: 0 0 auto; border: 1px solid #F0DDE3; border-radius: 12px; background: #FFF7F9; color: #963C5B; cursor: pointer; }
+    .nav-toggle svg { width: 21px; height: 21px; }
+    .hero, .content-section, #top { scroll-margin-top: 90px; }
+    .hero { position: relative; overflow: hidden; padding: clamp(70px,12vw,135px) clamp(22px,10vw,150px) clamp(70px,10vw,110px); background: radial-gradient(ellipse at 86% 15%,rgba(255,211,224,.72),transparent 36%), radial-gradient(ellipse at 8% 95%,rgba(255,237,242,.85),transparent 35%), linear-gradient(120deg,#FFF 0%,#FFFDFE 55%,#FFF4F7 100%); }
+    .hero::after { content: ""; position: absolute; right: -90px; bottom: -200px; width: 390px; height: 390px; border: 1px solid rgba(217,95,130,.23); border-radius: 50%; box-shadow: 0 0 0 35px rgba(217,95,130,.045),0 0 0 75px rgba(217,95,130,.025); pointer-events: none; }
+    .hero-label { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; color: var(--rose); font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    .hero-label::before { content: ""; width: 24px; height: 2px; background: var(--pink); }
+    .hero h1 { max-width: 850px; font-family: "Playfair Display",serif; font-size: clamp(2.6rem,7vw,6.1rem); font-weight: 500; line-height: 1.03; letter-spacing: -.055em; color: var(--ink); }
+    .hero h1 span { color: #C7476C; font-style: italic; }
+    .hero-description { max-width: 570px; margin-top: 26px; color: var(--slate); font-size: clamp(13px,1.5vw,15px); line-height: 1.9; }
+    .hero-bottom { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 28px; margin-top: 34px; color: var(--slate); font-size: 12px; }
+    .hero-bottom span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-bottom span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 3px var(--pink-soft); }
+    .content-section { padding: 76px clamp(22px,10vw,150px) 82px; background: #FFF; }
+    .content-section.alt { background: #FFFAFB; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 30px; }
+    .section-eyebrow { margin-bottom: 9px; color: var(--rose); font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+    .section-heading h2 { font-family: "Playfair Display",serif; font-size: clamp(2rem,4vw,3rem); font-weight: 500; letter-spacing: -.04em; color: var(--ink); }
+    .section-description { max-width: 520px; margin-top: 10px; color: var(--slate); font-size: 13px; line-height: 1.8; }
+    .project-count { padding-bottom: 6px; color: #725B63; font-size: 12px; white-space: nowrap; }
+    .project-list { border-top: 1px solid var(--line); }
+    .project-card { display: grid; grid-template-columns: 65px minmax(0,1fr) auto; align-items: center; gap: 22px; padding: 26px 12px; border-bottom: 1px solid var(--line); background: transparent; transition: padding .3s ease,background .3s ease,box-shadow .3s ease; }
+    .project-card:hover { padding-right: 20px; padding-left: 20px; background: #FFF7F9; box-shadow: inset 3px 0 var(--pink); }
+    .project-number { color: #C66A85; font-family: "Playfair Display",serif; font-size: 21px; }
+    .project-info h3 { color: var(--ink); font-size: 15px; font-weight: 700; letter-spacing: -.02em; line-height: 1.5; }
+    .project-info p { margin-top: 6px; color: var(--slate); font-size: 12px; line-height: 1.8; }
+    .project-type { display: inline-block; margin-top: 10px; padding: 6px 10px; border: 1px solid #F6D6E0; border-radius: 20px; background: #FFF0F4; color: #963C5B; font-size: 10px; font-weight: 700; }
+    .project-type.green { border-color: #CBE8D7; background: var(--green-soft); color: var(--green); }
+    .project-link { display: inline-flex; align-items: center; gap: 9px; padding: 9px 0 9px 12px; color: var(--rose); font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; transition: color .2s ease; }
+    .project-link:hover { color: #71233F; }
+    .project-link span { font-size: 17px; transition: transform .2s ease; }
+    .project-link:hover span { transform: translate(3px,-3px); }
+    .future-note { margin-top: 22px; padding: 17px 19px; border: 1px dashed #E8B4C4; border-radius: 12px; background: #FFFAFB; color: #725B63; font-size: 12px; line-height: 1.8; }
+    .future-note strong { color: var(--rose); }
+    .project-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+    .independent-card { display: flex; flex-direction: column; align-items: flex-start; min-height: 230px; padding: 26px; border: 1px solid #F0DDE3; border-radius: 16px; background: #FFF; box-shadow: 0 8px 26px rgba(91,43,59,.035); transition: transform .25s ease,border-color .25s ease,box-shadow .25s ease; }
+    .independent-card:hover { transform: translateY(-4px); border-color: #E7A6B9; box-shadow: 0 14px 32px rgba(91,43,59,.08); }
+    .project-icon { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 20px; border-radius: 13px; background: var(--pink-soft); color: var(--rose); }
+    .project-icon svg { width: 22px; height: 22px; }
+    .independent-card h3 { font-family: "Playfair Display",serif; font-size: 23px; font-weight: 600; line-height: 1.3; }
+    .independent-card p { margin-top: 9px; color: var(--slate); font-size: 12px; line-height: 1.8; }
+    .independent-card .project-type { margin-top: 13px; }
+    .independent-card .project-link { margin-top: auto; padding: 20px 0 0; }
+    .portfolio-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; padding: 25px clamp(22px,10vw,150px); border-top: 1px solid var(--line); background: var(--surface); color: var(--slate); font-size: 11px; }
+    .github-link,.back-to-top { color: #8E405A; text-decoration: none; transition: color .2s ease; }
+    .github-link:hover,.back-to-top:hover { color: #B83F66; text-decoration: underline; }
+    @media (min-width: 1200px) { .project-list { max-width: 1100px; } }
+    @media (max-width: 700px) {
+      .intro-content { transform: translateY(-4px); }
+      .intro-eyebrow { font-size: 9px; letter-spacing: .2em; }
+      .intro-description { font-size: 12px; }
+      .lamp-button { height: 300px; margin-top: 4px; }
+      .lamp-illustration { width: 165px; height: 230px; }
+      .lamp-halo { width: 220px; height: 220px; }
+      .welcome-screen.lamp-on .lamp-halo { width: 330px; height: 330px; }
+      .lamp-beam { border-left-width: 85px; border-right-width: 85px; border-top-width: 190px; }
+      .intro-footer { right: 15px; bottom: 16px; left: 15px; font-size: 9px; }
+      .portfolio-header { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; padding: 13px 18px; }
+      .brand { font-size: 18px; }
+      .header-note { max-width: 125px; font-size: 8px; line-height: 1.6; }
+      .nav-toggle { display: inline-flex; grid-column: 2; grid-row: 1; }
+      .portfolio-nav { display: none; grid-column: 1 / -1; grid-row: 2; align-items: stretch; flex-direction: column; gap: 0; padding-top: 8px; border-top: 1px solid var(--line); }
+      .portfolio-nav.is-open { display: flex; }
+      .portfolio-nav a { width: 100%; padding: 12px 10px; border-radius: 8px; font-size: 13px; }
+      .portfolio-nav a:hover { background: #FFF7F9; }
+      .portfolio-nav .nav-github { margin-top: 4px; text-align: center; }
+      .hero { padding-top: 76px; padding-bottom: 72px; }
+      .hero-description { line-height: 1.85; }
+      .content-section { padding-top: 56px; padding-bottom: 62px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .project-card { grid-template-columns: 34px minmax(0,1fr); gap: 12px; padding: 23px 0; }
+      .project-card:hover { padding-right: 8px; padding-left: 8px; }
+      .project-number { font-size: 17px; }
+      .project-info h3 { font-size: 14px; }
+      .project-info p { font-size: 12px; }
+      .project-link { grid-column: 2; justify-self: start; margin-top: -4px; padding-left: 0; }
+      .project-grid { grid-template-columns: 1fr; }
+      .independent-card { min-height: 215px; padding: 23px; }
+      .portfolio-footer { align-items: flex-start; flex-direction: column; padding-top: 25px; padding-bottom: 25px; }
+    }
+    @media (max-width: 380px) {
+      .lamp-button { height: 270px; }
+      .intro-title { font-size: 1.9rem; }
+      .header-note { display: none; }
+      .portfolio-header { grid-template-columns: 1fr auto; }
+      .nav-toggle { grid-column: 2; }
+      .hero h1 { font-size: 2.45rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Interactive lamp introduction -->
+  <section class="welcome-screen" id="welcomeScreen" aria-label="Welcome">
+    <div class="dust dust-one" aria-hidden="true"></div><div class="dust dust-two" aria-hidden="true"></div>
+    <div class="dust dust-three" aria-hidden="true"></div><div class="dust dust-four" aria-hidden="true"></div>
+    <div class="dust dust-five" aria-hidden="true"></div><div class="dust dust-six" aria-hidden="true"></div>
+    <main class="intro-content">
+      <p class="intro-eyebrow">Web System and Technology</p>
+      <h1 class="intro-title">A little light,<br><span>a world of ideas.</span></h1>
+      <p class="intro-description">Every project starts with a spark. Turn on the light and explore my work.</p>
+      <button class="lamp-button" id="lampButton" type="button" aria-label="Turn on the lamp and enter the portfolio">
+        <div class="lamp-halo" aria-hidden="true"></div><div class="lamp-beam" aria-hidden="true"></div>
+        <svg class="lamp-illustration" viewBox="0 0 190 255" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="shadeGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#554B54"/><stop offset="100%" stop-color="#29252B"/></linearGradient></defs>
+          <path class="lamp-shade" fill="url(#shadeGradient)" d="M48 67 L142 67 L123 23 Q120 17 112 17 L78 17 Q70 17 67 23 Z"/>
+          <path d="M45 67 Q95 75 145 67" fill="none" stroke="#73636D" stroke-width="3" stroke-linecap="round"/>
+          <path class="lamp-bulb" d="M82 67 Q82 54 75 46 Q68 38 70 31 Q72 17 95 17 Q118 17 120 31 Q122 38 115 46 Q108 54 108 67 Z" opacity=".95"/>
+          <path d="M84 65 L106 65 L103 75 L87 75 Z" fill="#8E7B70"/><path d="M88 69 L103 69 M89 73 L102 73" stroke="#C8AD8F" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="lamp-stem" d="M95 78 L95 211"/><path d="M93 86 L93 198" stroke="#9A8581" stroke-opacity=".25" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="lamp-base" d="M67 211 Q95 203 123 211 L135 226 Q95 236 55 226 Z"/>
+          <ellipse cx="95" cy="225" rx="40" ry="7" fill="#262126" opacity=".8"/><path d="M66 216 Q95 222 124 216" fill="none" stroke="#8A737D" stroke-opacity=".4" stroke-width="1.2"/>
+        </svg>
+        <div class="lamp-floor-light" aria-hidden="true"></div>
+      </button>
+      <p class="lamp-instruction" id="lampInstruction"><span>✦</span> Click the lamp to begin</p>
+    </main>
+    <p class="intro-footer">MARVIN M. MENESES &nbsp;·&nbsp; WEB SYSTEM AND TECHNOLOGY</p>
+  </section>
+
+  <div class="portfolio" id="portfolio">
+    <header class="portfolio-header" id="top">
+      <a class="brand" href="#home" aria-label="Marvin Meneses home">marvin<span>.</span></a>
+      <nav class="portfolio-nav" id="portfolioNav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#laboratories">Laboratory Activities</a>
+        <a href="#independent-projects">Independent Projects</a>
+        <a class="nav-github" href="https://github.com/MarvinMeneses-hub/IT-Laboratories-WEB" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="portfolioNav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+      <p class="header-note">Web System and Technology<br>Academic Portfolio</p>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <p class="hero-label">My academic portfolio</p>
+        <h1 id="hero-title">Hello, I'm<br>Marvin <span>Meneses.</span></h1>
+        <p class="hero-description">A collection of my Web System and Technology laboratory activities and independent projects, documenting my learning journey through web development, programming, and application design.</p>
+        <div class="hero-bottom">
+          <span>5 laboratory activities</span><span>Independent projects</span><span>BS Information Technology</span>
+        </div>
+      </section>
+
+      <section class="content-section" id="laboratories" aria-labelledby="labs-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-eyebrow">Coursework</p>
+            <h2 id="labs-title">Laboratory Activities</h2>
+            <p class="section-description">Practical activities completed for Web System and Technology. New laboratory entries can be added here as they are assigned.</p>
+          </div>
+          <p class="project-count">01 — 05 / Labs</p>
+        </div>
+        <div class="project-list">
+          <article class="project-card">
+            <span class="project-number">01</span><div class="project-info"><h3>Laboratory 1</h3><p>My first laboratory activity for the course.</p><span class="project-type">Web Development</span></div>
+            <a class="project-link" href="./lab1_2411600030/lab1.html" target="_blank" rel="noopener noreferrer">View activity <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">02</span><div class="project-info"><h3>Laboratory 2</h3><p>A continuation of my practical work in web development.</p><span class="project-type">Web Development</span></div>
+            <a class="project-link" href="./lab2_2411600030/index.html" target="_blank" rel="noopener noreferrer">View activity <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">03</span><div class="project-info"><h3>Laboratory 3</h3><p>Building technical and programming skills through practice.</p><span class="project-type">Web Development</span></div>
+            <a class="project-link" href="./lab3_2411600030/index.html" target="_blank" rel="noopener noreferrer">View activity <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">04</span><div class="project-info"><h3>Laboratory 4</h3><p>Applying course concepts in a practical web application.</p><span class="project-type">Web Application</span></div>
+            <a class="project-link" href="./lab4_2411600030/index.html" target="_blank" rel="noopener noreferrer">View activity <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">05</span><div class="project-info"><h3>Laboratory 5 — Inventory Management</h3><p>A Laravel-based inventory management project. Open its source repository to explore the project files.</p><span class="project-type">Laravel · PHP</span></div>
+            <a class="project-link" href="https://github.com/MarvinMeneses-hub/IT-Laboratories-WEB/tree/main/lab5_2411600030/inventory-management-main" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <div class="future-note"><strong>More activities coming:</strong> Future laboratory activities can be added to this list without mixing them with independent projects.</div>
+      </section>
+
+      <section class="content-section alt" id="independent-projects" aria-labelledby="independent-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-eyebrow">Beyond coursework</p>
+            <h2 id="independent-title">Independent Projects</h2>
+            <p class="section-description">Projects maintained separately from the laboratory activities, with source-code links for exploring the work.</p>
+          </div>
+          <p class="project-count">Personal &amp; extended work</p>
+        </div>
+        <div class="project-grid">
+          <article class="independent-card">
+            <div class="project-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h.01M15 10h.01M9 14h.01M15 14h.01M10 21v-4h4v4"/></svg>
+            </div>
+            <h3>Banking System</h3>
+            <p>A Laravel/PHP application project maintained in a separate repository. Visit the source repository to review the available code and project documentation.</p>
+            <span class="project-type">Laravel · PHP</span>
+            <a class="project-link" href="https://github.com/MarvinMeneses-hub/banking-system-WEB" target="_blank" rel="noopener noreferrer">Explore source repository <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="independent-card">
+            <div class="project-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M8 7h8M8 11h8"/></svg>
+            </div>
+            <h3>More projects</h3>
+            <p>This space is ready for additional independent projects as they are completed. Each project can have its own summary and source or live-demo link.</p>
+            <span class="project-type">Expandable portfolio</span>
+            <a class="project-link" href="#independent-projects">Project section <span aria-hidden="true">↓</span></a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="portfolio-footer">
+      <p>© <span id="currentYear"></span> Marvin M. Meneses</p>
+      <a class="github-link" href="https://github.com/MarvinMeneses-hub/IT-Laboratories-WEB" target="_blank" rel="noopener noreferrer">Explore my laboratory portfolio on GitHub ↗</a>
+      <a class="back-to-top" href="#top">Back to top ↑</a>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+      const welcomeScreen = document.getElementById("welcomeScreen");
+      const lampButton = document.getElementById("lampButton");
+      const lampInstruction = document.getElementById("lampInstruction");
+      const portfolio = document.getElementById("portfolio");
+      const currentYear = document.getElementById("currentYear");
+      const navToggle = document.getElementById("navToggle");
+      const portfolioNav = document.getElementById("portfolioNav");
+      let lampActivated = false;
+
+      currentYear.textContent = new Date().getFullYear();
+
+      function closeNavigation() {
+        portfolioNav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Open navigation menu");
+      }
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = portfolioNav.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+      });
+
+      portfolioNav.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", closeNavigation);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeNavigation();
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 700) closeNavigation();
+      });
+
+      function turnOnLamp() {
+        if (lampActivated) return;
+        lampActivated = true;
+        lampButton.disabled = true;
+        lampButton.setAttribute("aria-label", "Lamp turned on");
+        lampInstruction.textContent = "Let there be light...";
+        welcomeScreen.classList.add("lamp-on");
+
+        window.setTimeout(() => portfolio.classList.add("is-visible"), 1100);
+        window.setTimeout(() => welcomeScreen.classList.add("leaving"), 1900);
+        window.setTimeout(() => { welcomeScreen.style.display = "none"; }, 3200);
+      }
+
+      lampButton.addEventListener("click", turnOnLamp);
+    })();
+  </script>
+</body>
+</html>
